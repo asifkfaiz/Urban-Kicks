@@ -1,0 +1,2 @@
+font-family: 'Synonym', sans-serif;
+font-family: 'Chillax', sans-serif;
