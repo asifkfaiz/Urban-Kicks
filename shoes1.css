@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(232, 232, 232);
+  font-family: "Synonym", sans-serif;
+  padding: 10px 200px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.prod_box {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  border-radius: 10px;
+}
+
+.left_box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ----------------------LEFT SIDE---------------------------- */
+
+.prod_img_main img {
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+.prod_imgs img {
+  width: 50px;
+  border-radius: 10px;
+}
+
+.prod_size {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.left_box h3 {
+  color: rgba(0, 0, 0, 0.578);
+  font-weight: 500;
+}
+
+.size_btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+.size_btn:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+.size_btn.active {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+
+
+button a{
+    text-decoration: none;
+    color: black;
+}
+
+/* ----------------------RIGHT SIDE---------------------------- */
+
+.right_box {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.prod_title h1 {
+  margin-bottom: 5px;
+}
+
+.prod_info h3 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.prod_title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.ratings {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.ratings .badge {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.sales_info {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.final_price {
+  font-weight: bold;
+  color: #000000;
+}
+
+.discount {
+  color: #007600a2;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.mrp {
+  font-size: 14px;
+  color: #555;
+}
+
+
+.prod_quan{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prod_quan h3{
+font-weight: 600;
+
+}
+
+.quan_box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: fit-content;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.quan_box .minus,
+.quan_box .plus {
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.quan_box .minus:hover,
+.quan_box .plus:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.quan_box .count {
+  font-size: 18px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.cart_quan{
+    display: flex;
+    gap: 10px;
+}
+
+.cart {
+  background-color: #ff3e3e;
+  color: #fff;
+  padding: 14px 38px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 62, 62, 0.3);
+  user-select: none;
+}
+
+.cart:hover {
+  background-color: #e03535;
+  box-shadow: 0 6px 14px rgba(255, 62, 62, 0.5);
+  transform: translateY(-2px);
+}
+
+.cart h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.cart a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.cartbtn{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+}
+.cartbtn:hover i,.homebtn:hover i{
+    color: white;
+}

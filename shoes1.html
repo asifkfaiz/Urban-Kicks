@@ -1,23 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=synonym@200,300,400,500,600,700,1&f[]=chillax@200,300,400,500,600,700,1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="shoes1.css" />
+    <title>Shoes1</title>
+  </head>
+  <body>
     <div class="container">
-        <div class="prod_box">
-            <div class="left_box">
-                <div class="prod_img_main"></div>
-                <div class="prod_imgs"></div>
-                <div class="prod_size"></div>
+      <div class="prod_box">
+        <div class="left_box">
+          <div class="images">
+            <div class="prod_img_main">
+              <img src="Assets/shoe1 nike-air-jordan-1-mid.jpg" alt="" />
             </div>
-            <div class="right_box">
-                <div class="prod_info"></div>
-                <div class="prod_quan"></div>
+            <div class="prod_imgs">
+              <img src="Assets/shoe1 nike-air-jordan-1-mid.jpg" alt="" />
+              <img src="Assets/shoe1 nike-air-jordan-1-mid.jpg" alt="" />
+              <img src="Assets/shoe1 nike-air-jordan-1-mid.jpg" alt="" />
+              <img src="Assets/shoe1 nike-air-jordan-1-mid.jpg" alt="" />
             </div>
+          </div>
+          <h3>Select Sizes (UK Size):</h3>
+          <div class="prod_size">
+            <button onclick="toggleLike(event,this)" class="size_btn">6</button>
+            <button class="size_btn">7</button>
+            <button class="size_btn">8</button>
+            <button class="size_btn">9</button>
+            <button class="size_btn">10</button>
+            <button class="size_btn">11</button>
+          </div>
         </div>
+        <div class="right_box">
+          <div class="prod_info">
+            <div class="prod_title">
+              <h1>Nike Air Jordan 1 Mid</h1>
+              <button class="size_btn homebtn">
+                <a href="homepage.html"><i class="fa-solid fa-house"></i></a>
+              </button>
+            </div>
+            <h3>
+              A timeless icon reimagined. The Nike Air Jordan 1 Mid delivers
+              premium leather construction, iconic mid-top design, and Air-Sole
+              cushioning for everyday comfort and classic court-inspired style.
+            </h3>
+
+            <div class="ratings">
+              <span>4.5 ★</span>
+              <span>4,321 ratings</span>
+              <span class="badge">#1 Best Seller</span>
+            </div>
+
+            <div class="sales_info">
+              <p><strong>500+</strong> bought in past month</p>
+              <p>
+                <strong>Urban Kicks's Choice</strong> for "mid-top sneakers"
+              </p>
+            </div>
+
+            <div class="price">
+              <p class="final_price">
+                ₹11,495 <span class="discount">-35%</span>
+              </p>
+              <p class="mrp">M.R.P.: <s>₹12,999</s></p>
+            </div>
+          </div>
+
+          <div class="prod_quan">
+            <h3>Quantity:</h3>
+            <div class="cart_quan">
+              <div class="quan_box">
+                <div onclick="dec()" class="minus">
+                  <i class="fa-solid fa-minus"></i>
+                </div>
+                <div id="counter" class="count">0</div>
+                <div onclick="inc()" class="plus">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+              </div>
+              <div onclick="addToCart()" class="cart">
+                <h1>Add to Cart</h1>
+              </div>
+              <button class="size_btn cartbtn">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+
+    <script>
+      let quantity = 0;
+
+      function update() {
+        document.getElementById("counter").innerText = quantity;
+      }
+
+      function inc() {
+        quantity += 1;
+        update();
+      }
+      function dec() {
+        if (quantity > 0) {
+          quantity -= 1;
+          update();
+        }
+      }
+
+
+      function toggleLike(event,el) {
+  event.stopPropagation();
+  el.classList.toggle("active");
+}
+
+
+function addToCart() {
+  if (quantity === 0) {
+    alert("Select quantity before adding.");
+    return;
+  }
+
+  const product = {
+    id: 1,
+    name: "Nike Air Jordan 1 Mid",
+    price: 11495,
+    quantity: quantity,
+    image: "Assets/shoe1 nike-air-jordan-1-mid.jpg"
+  };
+
+  // Get cart from localStorage
+  const cartStr = localStorage.getItem("cart");
+  const cart = cartStr ? JSON.parse(cartStr) : [];
+
+  // Check for existing product
+  const index = cart.findIndex(item => item.id === product.id);
+
+  if (index !== -1) {
+    cart[index].quantity += product.quantity;
+  } else {
+    cart.push(product); // push new product
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart!");
+
+  quantity = 0;
+  update();
+}
+
+
+    </script>
+  </body>
 </html>
