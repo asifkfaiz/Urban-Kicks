@@ -57,6 +57,7 @@ nav, .filters{
   background: none;
   font-size: 15px;
   width: 350px;
+  margin-left: 15px;
 }
 
 .searchbar input:focus {
@@ -120,12 +121,19 @@ nav, .filters{
   transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
+    z-index: 10;
 }
 .likebtn:hover {
   transform: translateY(-2px);
    background-color: red;
   color: white;
 }
+.likebtn.active {
+  background-color: red;
+  color: white;
+}
+
+
 .cartbtn {
   display: inline-flex;
   align-items: center;
@@ -184,7 +192,9 @@ nav, .filters{
       transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter:hover {
@@ -199,6 +209,7 @@ nav, .filters{
     font-size: 18px;
     font-weight: 500;
 }
+
 
 
 /* -------------------PRODUCTS---------------------- */
@@ -223,6 +234,35 @@ nav, .filters{
        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
     transition: 0.3s;
+}
+.cards a{
+  text-decoration: none;
+  color: black;
+}
+.cards .likebtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+    z-index: 10;
+}
+.cards .likebtn:hover {
+  transform: translateY(-2px);
+   background-color: red;
+  color: white;
+}
+.cards .likebtn.active {
+  background-color: red;
+  color: white;
 }
 
 .cards:hover {
