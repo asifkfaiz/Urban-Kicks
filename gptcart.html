@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    #cart_items {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .cart_item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+      gap: 20px;
+    }
+
+    .cart_item img {
+      width: 110px;
+      border-radius: 10px;
+    }
+
+    .cart_info {
+      flex-grow: 1;
+    }
+
+    .cart_info h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .cart_info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .remove_btn {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .remove_btn:hover {
+      color: red;
+    }
+
+    #total_box {
+      max-width: 900px;
+      margin: 20px auto 0;
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Cart</h1>
+  <div id="cart_items"></div>
+  <div id="total_box"></div>
+
+  <script>
+    // Dummy products (simulate localStorage)
+    const dummyCart = [
+      {
+        id: 1,
+        name: "Nike Air Jordan 1 Mid",
+        price: 11495,
+        quantity: 1,
+        image: "https://via.placeholder.com/150?text=Nike+AJ1"
+      },
+      {
+        id: 2,
+        name: "Adidas Ultraboost 22",
+        price: 13999,
+        quantity: 2,
+        image: "https://via.placeholder.com/150?text=Adidas+UB22"
+      },
+      {
+        id: 3,
+        name: "Puma RS-X",
+        price: 8999,
+        quantity: 1,
+        image: "https://via.placeholder.com/150?text=Puma+RS-X"
+      }
+    ];
+
+    // Normally you'd do: const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = dummyCart;
+
+    const cartItems = document.getElementById("cart_items");
+    const totalBox = document.getElementById("total_box");
+
+    let grandTotal = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+      const item = cart[i];
+      grandTotal += item.price * item.quantity;
+
+      const card = document.createElement("div");
+      card.className = "cart_item";
+
+      const img = document.createElement("img");
+      img.src = item.image;
+      card.appendChild(img);
+
+      const info = document.createElement("div");
+      info.className = "cart_info";
+
+      const title = document.createElement("h2");
+      title.innerText = item.name;
+      info.appendChild(title);
+
+      const price = document.createElement("p");
+      price.innerText = "Price: ₹" + item.price;
+      info.appendChild(price);
+
+      const qty = document.createElement("p");
+      qty.innerText = "Quantity: " + item.quantity;
+      info.appendChild(qty);
+
+      const total = document.createElement("p");
+      total.innerText = "Total: ₹" + (item.price * item.quantity);
+      info.appendChild(total);
+
+      card.appendChild(info);
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "remove_btn";
+      removeBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      removeBtn.onclick = function () {
+        card.remove();
+      };
+      card.appendChild(removeBtn);
+
+      cartItems.appendChild(card);
+    }
+
+    totalBox.innerText = "Grand Total: ₹" + grandTotal.toLocaleString();
+  </script>
+
+</body>
+</html>

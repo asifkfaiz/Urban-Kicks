@@ -15,14 +15,15 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 20px 10px;
-    position: sticky;
+  position: sticky;
   top: 0;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
-nav, .filters{
-    background-color: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(5px);
+nav,
+.filters {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(5px);
 }
 .logo_search {
   display: flex;
@@ -121,18 +122,17 @@ nav, .filters{
   transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
-    z-index: 10;
+  z-index: 10;
 }
 .likebtn:hover {
   transform: translateY(-2px);
-   background-color: red;
+  background-color: red;
   color: white;
 }
 .likebtn.active {
   background-color: red;
   color: white;
 }
-
 
 .cartbtn {
   display: inline-flex;
@@ -151,7 +151,7 @@ nav, .filters{
 }
 .cartbtn:hover {
   transform: translateY(-2px);
-   background-color: #000000;
+  background-color: #000000;
   color: white;
 }
 .profilebtn {
@@ -175,21 +175,18 @@ nav, .filters{
   color: white;
 }
 
-
-
 /* ---------------------FILTER----------------- */
 
-.filters{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 10px;
- 
+.filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
 }
-.filter{
-    background-color: white;
-    border-radius: 40px;
-    padding: 8px 15px;
-      transition: 0.3s;
+.filter {
+  background-color: white;
+  border-radius: 40px;
+  padding: 8px 15px;
+  transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -199,43 +196,39 @@ nav, .filters{
 
 .filter:hover {
   transform: translateY(-2px);
-   background-color: #000000;
+  background-color: #000000;
   color: white;
   cursor: pointer;
-  
 }
 
-.filter h1{
-    font-size: 18px;
-    font-weight: 500;
+.filter h1 {
+  font-size: 18px;
+  font-weight: 500;
 }
-
-
 
 /* -------------------PRODUCTS---------------------- */
 
-
 .products {
-    padding: 10px 0px;
-    display: grid;
-    grid-template-columns: repeat(4, 280px);
-    gap: 20px; 
-    justify-content: space-around; 
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: 20px;
+  justify-content: space-around;
 }
 
 .cards {
-    height: 380px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 5px;
-       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+  height: 380px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
-    transition: 0.3s;
+  transition: 0.3s;
 }
-.cards a{
+.cards a {
   text-decoration: none;
   color: black;
 }
@@ -253,11 +246,11 @@ nav, .filters{
   transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
-    z-index: 10;
+  z-index: 10;
 }
 .cards .likebtn:hover {
   transform: translateY(-2px);
-   background-color: red;
+  background-color: red;
   color: white;
 }
 .cards .likebtn.active {
@@ -269,92 +262,148 @@ nav, .filters{
   transform: scale(1.03);
 }
 
-.prod_img{
-    width: 259px;
-    height: 259px;
-    border-radius: 10px;
+.prod_img {
+  width: 259px;
+  height: 259px;
+  border-radius: 10px;
+}
+.prod_img img {
+  width: 259px;
+  border-radius: 10px;
 }
 
-.prod_info{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.prod_info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.prod_title{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    
+.prod_title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.prod_title h1{
-    font-family: 'Chillax', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    
+.prod_title h1 {
+  font-family: "Chillax", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
 }
-.prod_title h3{
-    font-family: 'Chillax', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
+.prod_title h3 {
+  font-family: "Chillax", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
 }
-.prod_det{
-    display: flex;
-    justify-content: space-between;
+.prod_det {
+  display: flex;
+  justify-content: space-between;
 }
-.prod_det h2{
-    border-radius: 10px;
-    padding: 5px 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+.prod_det h2 {
+  border-radius: 10px;
+  padding: 5px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
-.card1 .prod_img{
-    background-image: url(Assets/shoe1\ nike-air-jordan-1-mid.jpg);
-    background-size: cover;
+.card1 .prod_img {
+  background-image: url(Assets/shoe1.jpg);
+  background-size: cover;
 }
-.card2 .prod_img{
-    background-image: url(Assets/shoes2.jpeg);
-    background-size: cover;
+.card2 .prod_img {
+  background-image: url(Assets/shoes2.jpeg);
+  background-size: cover;
 }
-.card3 .prod_img{
-    background-image: url(Assets/shoes3.jpeg);
-    background-size: cover;
+.card3 .prod_img {
+  background-image: url(Assets/shoes3.jpeg);
+  background-size: cover;
 }
-.card4 .prod_img{
-    background-image: url(Assets/shoes4.jpg);
-    background-size: cover;
+.card4 .prod_img {
+  background-image: url(Assets/shoes4.jpg);
+  background-size: cover;
 }
-.card5 .prod_img{
-    background-image: url(Assets/shoes5.jpg);
-    background-size: cover;
+.card5 .prod_img {
+  background-image: url(Assets/shoes5.jpg);
+  background-size: cover;
 }
-.card6 .prod_img{
-    background-image: url(Assets/shoes6.webp);
-    background-size: cover;
+.card6 .prod_img {
+  background-image: url(Assets/shoes6.webp);
+  background-size: cover;
 }
-.card7 .prod_img{
-    background-image: url(Assets/shoes7.webp);
-    background-size: cover;
+.card7 .prod_img {
+  background-image: url(Assets/shoes7.webp);
+  background-size: cover;
 }
-.card8 .prod_img{
-    background-image: url(Assets/shoes8.jpg);
-    background-size: cover;
+.card8 .prod_img {
+  background-image: url(Assets/shoes8.jpg);
+  background-size: cover;
 }
-.card9 .prod_img{
-    background-image: url(Assets/shoes9.jpg);
-    background-size: cover;
+.card9 .prod_img {
+  background-image: url(Assets/shoes9.jpg);
+  background-size: cover;
 }
-.card10 .prod_img{
-    background-image: url(Assets/shoes10.jpg);
-    background-size: cover;
+.card10 .prod_img {
+  background-image: url(Assets/shoes10.jpg);
+  background-size: cover;
 }
-.card11 .prod_img{
-    background-image: url(Assets/shoes11.jpg);
-    background-size: cover;
+.card11 .prod_img {
+  background-image: url(Assets/shoes11.jpg);
+  background-size: cover;
 }
-.card12 .prod_img{
-    background-image: url(Assets/shoes12.jpg);
-    background-size: cover;
+.card12 .prod_img {
+  background-image: url(Assets/shoes12.jpg);
+  background-size: cover;
+}
+
+/* ---------------- RESPONSIVE ADJUSTMENTS ---------------- */
+
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+  .searchbar input {
+    width: 200px;
+  }
+  .filters {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .logo_search {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+  .prod_img img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .searchbar input {
+    width: 100px;
+  }
+  .filters {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .filter {
+    width: 100%;
+    text-align: center;
+  }
 }
