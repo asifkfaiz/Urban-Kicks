@@ -36,7 +36,10 @@
       </div>
       <div class="cart_like">
         <a class="likebtn" href="#"><i class="fa-solid fa-heart"></i></a>
-        <a class="cartbtn" href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a class="cartbtn" href="#">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <p>0</p>
+        </a>
         <a class="profilebtn" href="#"><i class="fa-solid fa-user"></i></a>
       </div>
     </nav>
@@ -98,7 +101,7 @@
           </div>
           <div class="prod_det">
             <h2>₹11,495</h2>
-            <a class="likebtn"><i class="fa-solid fa-heart"></i></a>
+            <a onclick="toggleLike(event,this)" class="likebtn"><i class="fa-solid fa-heart"></i></a>
           </div>
         </a>
       </div>

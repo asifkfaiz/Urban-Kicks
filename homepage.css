@@ -148,12 +148,32 @@ nav,
   transition: 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
+    position: relative;
 }
 .cartbtn:hover {
   transform: translateY(-2px);
   background-color: #000000;
   color: white;
 }
+
+.cartbtn p {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  background-color: rgb(255, 69, 69);
+  color: white; 
+  border-radius: 50%;
+  width: 25px;   
+  height: 25px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; 
+}
+
+
+
+
 .profilebtn {
   display: inline-flex;
   align-items: center;

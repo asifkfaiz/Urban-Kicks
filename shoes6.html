@@ -459,16 +459,27 @@
         }, 200);
       }
 
-      // function addToCart() {
-      //   let product1 = {
-      //     name: document.getElementById("name").innerText,
-      //     quantity: quantity,
-      //   };
-      //   console.log(product1);
-      //   let dummy = localStorage.getItem("cart") ?? [{}];
-      //   localStorage.setItem("cart", [...dummy, product1]);
-      //   console.log(localStorage.getItem("cart"));
-      // }
+
+  function addToCart() {
+    let product = {
+      name: document.getElementById("name").innerText,
+      price: document.querySelector(".final_price").innerText,
+      quantity: quantity
+    };
+
+    // Get current cart or empty array
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // Add this product
+    cart.push(product);
+
+    // Save updated cart
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    console.log("Cart updated:", cart);
+  }
+
+
     </script>
   </body>
 </html>
