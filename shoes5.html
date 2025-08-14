@@ -270,6 +270,35 @@
         color: white;
       }
 
+      #cart-toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ffffff;
+        color: #000000;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 2000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+          0 0 0 1px rgba(0, 0, 0, 0.04);
+      }
+
+      #cart-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .size_btn.selected {
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+      }
+
       @media (max-width: 1024px) {
         body {
           padding: 10px 50px;
@@ -431,6 +460,7 @@
       </div>
     </div>
 
+    <div id="cart-toast">Added to Cart!</div>
     <script>
       let quantity = 0;
 
@@ -460,16 +490,69 @@
         }, 200);
       }
 
-      // function addToCart() {
-      //   let product1 = {
-      //     name: document.getElementById("name").innerText,
-      //     quantity: quantity,
-      //   };
-      //   console.log(product1);
-      //   let dummy = localStorage.getItem("cart") ?? [{}];
-      //   localStorage.setItem("cart", [...dummy, product1]);
-      //   console.log(localStorage.getItem("cart"));
-      // }
+      let sizeButtons = document.querySelectorAll(".size_btn");
+
+      sizeButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          sizeButtons.forEach((b) => b.classList.remove("selected"));
+          this.classList.add("selected");
+        });
+      });
+
+      function showCartToast(message) {
+        let toast = document.getElementById("cart-toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+
+      function addToCart() {
+        let selectedSize =
+          document.querySelector(".size_btn.selected")?.innerText || "N/A";
+
+        if (quantity <= 0) {
+          showCartToast("⚠ Quantity is Zero");
+          return;
+        }
+        if (selectedSize === "N/A") {
+          showCartToast("⚠ Please select a size");
+          return;
+        }
+
+        let product1 = {
+          name: document.getElementById("name").innerText,
+          mrp: document.querySelector(".mrp").childNodes[1].textContent.trim(),
+          price: document
+            .querySelector(".final_price")
+            .childNodes[0].textContent.trim(),
+          quantity: quantity,
+          size: selectedSize,
+          img: document.getElementById("mainimg").src,
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+        let existing = cart.find(
+          (item) => item.name === product1.name && item.size === product1.size
+        );
+
+        if (existing) {
+          existing.quantity += product1.quantity;
+        } else {
+          cart.push(product1);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        quantity = 0;
+        update();
+
+        showCartToast("Added to Cart!");
+
+        console.log("Cart:", cart);
+      }
     </script>
   </body>
 </html>

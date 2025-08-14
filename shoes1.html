@@ -555,9 +555,15 @@ function addToCart() {
     cart.push(product1);
   }
 
-  // Save to localStorage
+
   localStorage.setItem("cart", JSON.stringify(cart));
+
+ quantity=0;
+ update();
+
 showCartToast("Added to Cart!");
+
+;
 
   console.log("Cart:", cart);
 }
