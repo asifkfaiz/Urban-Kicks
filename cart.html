@@ -1,17 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>My Cart</title>
+    <link rel="stylesheet" href="cart.css" />
+    <script
+      src="https://kit.fontawesome.com/your-fontawesome-key.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="title">
+        <h1>Shopping Cart</h1>
+      </div>
+      <div id="cart-container" class="items">2</div>
+      <div id="cart-total" class="total">
+      </div>
+    </div>
+    <script>
+      function loadCart() {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        let container = document.getElementById("cart-container");
+        let totalMRP = 0;
+        let total = 0;
+        container.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          let priceNum = parseInt(item.price.replace(/[₹,]/g, ""));
+          let mrpNum = parseInt(item.mrp.replace(/[₹,]/g, ""));
+          let itemTotal = priceNum * item.quantity;
+          let itemMRPTotal = mrpNum * item.quantity;
+          total += itemTotal;
+          totalMRP += itemMRPTotal;
+          let discPerc = Math.round(((mrpNum - priceNum) / mrpNum) * 100);
 
 
-  <script>
 
-   
-  </script>
-</body>
+          let div = document.createElement("div");
+          div.classList.add("cart-item");
+
+          div.innerHTML = `
+          <a href="${item.page}">
+          <div class="prod_title">
+        <img src="${item.img}" alt="${item.name}" />
+        <h1>Nike Air Jordan 1 Mid</h1>
+      </div>
+      </a>
+          <div class="prod_price">
+        <p class="mrp">M.R.P.: <s>${item.mrp}</s></p>
+        <p class="final_price">${
+          item.price
+        }<span class="discount">-${discPerc}%</span></p>
+      </div>
+      <div class="prod_quan">
+        <h3>Quantity:</h3>
+        <div class="quan_mod">
+          <div class="quan_box">
+            <div onclick="changeQuantity(${index}, -1)" class="minus">
+              <i class="fa-solid fa-minus"></i>
+            </div>
+            <div class="count">${item.quantity}</div>
+            <div onclick="changeQuantity(${index}, 1)" class="plus">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
+          <div class="trashbtn">
+            <button class="removebtn" onclick="removeItem(${index})">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="prod_total">
+        <h3>Total:</h3>
+        <p class="totalPrice">
+          <span class="mrpTotal"><s>₹${itemMRPTotal.toLocaleString()}</s></span>
+          <span class="priceTotal">₹${itemTotal.toLocaleString()}</span
+          ><span class="discount">-${discPerc}%</span>
+        </p>
+      </div>  `;
+
+          container.appendChild(div);
+        });
+
+        // After the forEach loop
+let totalDiscountPercent = ((totalMRP - total) / totalMRP) * 100;
+document.getElementById("cart-total").innerHTML = `
+  <h2>Total: ₹${total.toLocaleString()}</h2>
+  <p>
+    <s>₹${totalMRP.toLocaleString()}</s>
+    <span class="discount">-${totalDiscountPercent}%</span>
+  </p>
+  <button id="checkout-btn">Checkout</button>
+`;
+
+
+        document.getElementById("total-price").innerText =
+          total.toLocaleString();
+      }
+
+      function changeQuantity(index, delta) {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        cart[index].quantity += delta;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+      }
+
+      function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+      }
+
+      // Load cart on page load
+      loadCart();
+    </script>
+  </body>
 </html>

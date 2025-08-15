@@ -1,86 +1,28 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
- font-family: 'Synonym', sans-serif;;
-}
-.main{
-  min-height: 100vh;
-  background-color: rgb(178, 240, 128);
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr 2fr;
-}
-
-.title{
-  grid-area: 1/1/2/5;
-  background-color: lightseagreen;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.items{
-  background-color: blanchedalmond;
-  grid-area: 2/1/5/3;
-}
-.total{
-  background-color: cornflowerblue;
-  grid-area: 2/3/5/5;
-}
-
-.items{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  padding: 10px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cart-item {
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        padding: 10px;
+      }
+      .card {
         background-color: rgb(255, 255, 255);
         display: flex;
         flex-direction: column;
         max-width: 250px;
-        max-height: 350px;
         border-radius: 10px;
         padding: 8px;
         gap: 15px;
@@ -167,8 +109,6 @@
 
       img {
         width: 80px;
-        height: 80px;
-        object-fit: cover;
         border-radius: 10px;
       }
 
@@ -228,3 +168,48 @@
         font-weight: bold;
         color: #333;
       }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="prod_title">
+        <img src="/Assets/shoe1.jpg" alt="" />
+        <h1>Nike Air Jordan 1 Mid</h1>
+      </div>
+
+      <div class="prod_price">
+        <p class="mrp">M.R.P.: <s>₹12,895</s></p>
+        <p class="final_price">₹9,295 <span class="discount">-28%</span></p>
+      </div>
+      <div class="prod_quan">
+        <h3>Quantity:</h3>
+        <div class="quan_mod">
+          <div class="quan_box">
+            <div onclick="dec()" class="minus">
+              <i class="fa-solid fa-minus"></i>
+            </div>
+            <div id="counter" class="count">0</div>
+            <div onclick="inc()" class="plus">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
+          <div class="trashbtn">
+            <button class="removebtn">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod_total">
+        <h3>Total:</h3>
+        <p class="totalPrice">
+          <span class="mrpTotal"><s>₹12,895</s></span>
+          <span class="priceTotal">₹9,295 </span
+          ><span class="discount">-28%</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

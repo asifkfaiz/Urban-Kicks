@@ -509,7 +509,6 @@
       function addToCart() {
         let selectedSize =
           document.querySelector(".size_btn.selected")?.innerText || "N/A";
-
         if (quantity <= 0) {
           showCartToast("⚠ Quantity is Zero");
           return;
@@ -521,19 +520,20 @@
 
         let product1 = {
           name: document.getElementById("name").innerText,
-          mrp: document.querySelector(".mrp").childNodes[1].textContent.trim(),
+          mrp: document.querySelector(".mrp").childNodes[1].textContent.tr(),
           price: document
             .querySelector(".final_price")
             .childNodes[0].textContent.trim(),
           quantity: quantity,
           size: selectedSize,
           img: document.getElementById("mainimg").src,
+          page: "shoes3.html",
         };
 
         let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
         let existing = cart.find(
-          (item) => item.name === product1.name && item.size === product1.size
+          (item) => item.name === product1.name && item.size === pruct1.size
         );
 
         if (existing) {
