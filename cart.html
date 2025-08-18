@@ -5,13 +5,306 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+<style>
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Synonym", sans-serif;
+}
+.main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-rows: 80px 2fr 2fr 2fr;
+  gap: 5px;
+  padding: 5px;
+}
+
+.title {
+  margin-top: 2px;
+  grid-area: 1/1/2/5;
+  background-color: rgba(255, 255, 255, 0.386);
+  backdrop-filter: blur(3px);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.315), 0 8px 20px rgba(0, 0, 0, 0.485),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 6px;
+}
+.title i {
+  font-size: 25px;
+}
+.title h1 {
+  font-size: 25px;
+  font-family: "Chillax", sans-serif;
+}
+
+.items {
+  background-color: rgba(255, 235, 205, 0);
+  grid-area: 2/1/5/3;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  place-items: center;
+}
+.total {
+
+  grid-area: 2/3/5/5;
+  padding: 10px;
+  border-radius: 10px;
+  
+}
+
+.bill{
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.315), 0 8px 20px rgba(0, 0, 0, 0.485),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+position: sticky;
+top: 100px;
+}
+
+.cart-item {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  max-height: 350px;
+  border-radius: 10px;
+  padding: 8px;
+  gap: 15px;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.315), 0 8px 20px rgba(0, 0, 0, 0.485),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.prod_title {
+  display: flex;
+  gap: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.355);
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.prod_title h1 {
+  align-self: center;
+  font-size: 22px;
+  font-family: "Chillax", sans-serif;
+}
+
+.quan_mod {
+  display: flex;
+  justify-content: space-around;
+}
+.trashbtn {
+  align-self: center;
+}
+
+.removebtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  color: red;
+}
+.removebtn i {
+  font-size: 18px;
+}
+
+.removebtn:hover {
+  background-color: red;
+  color: black;
+  border-color: black;
+}
+
+.prod_total {
+  font-size: 23px;
+}
+
+.price {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.final_price {
+  font-weight: bold;
+  color: #000000;
+}
+
+.discount {
+  color: #007600a2;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.mrp,
+.mrpTotal {
+  font-size: 14px;
+  color: #555;
+}
+.priceTotal {
+  font-weight: bold;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.prod_quan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prod_quan h3 {
+  font-weight: 600;
+}
+
+.itemsize {
+  color: #000000a9;
+}
+
+.quan_box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: fit-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.quan_box .minus,
+.quan_box .plus {
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.quan_box .minus:hover,
+.quan_box .plus:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+
+
+
+.quan_box .count {
+  font-size: 18px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.checkout {
+  background-color: #ff3e3e;
+  color: #fff;
+  padding: 14px 38px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 62, 62, 0.3);
+  user-select: none;
+}
+
+.checkout:hover {
+  background-color: #e03535;
+  box-shadow: 0 6px 14px rgba(255, 62, 62, 0.5);
+  transform: translateY(-2px);
+}
+
+.checkout h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.cart a {
+  text-decoration: none;
+  color: white;
+}
+
+.homebtn i{
+  font-size: 15px;
+}
+
+.btns{
+  display: flex;
+  gap: 10px;
+}
+
+
+.size_btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+.size_btn:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.size_btn:hover i{
+  color: white;
+}
+
+</style>
     <title>My Cart</title>
-    <link rel="stylesheet" href="cart.css" />
     <script
       src="https://kit.fontawesome.com/your-fontawesome-key.js"
       crossorigin="anonymous"
@@ -20,18 +313,67 @@
   <body>
     <div class="main">
       <div class="title">
-        <h1>Shopping Cart</h1>
+        <h1>Your Cart <i class="fa-solid fa-cart-shopping"></i></h1>
       </div>
       <div id="cart-container" class="items">2</div>
       <div id="cart-total" class="total">
+        <div class="bill">
+          <h2>Cart Summary</h2>
+
+          <p>Total Quantity: <span id="totalQuantity">0</span></p>
+
+          <p>
+            MRP Total: <s id="totalMRP">₹0</s>
+            <span class="discount" id="discountPercent">0% OFF</span>
+          </p>
+
+          <h3>Grand Total: <span id="grandTotal">₹0</span></h3>
+
+          <p class="savings">
+            You saved <strong id="totalSavings">₹0</strong> today!
+          </p>
+
+          <div class="btns">
+            <div class="checkout">
+              <h1>Buy Items</h1>
+            </div>
+            <button class="size_btn homebtn">
+              <a href="homepage.html"><i class="fa-solid fa-house"></i></a>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <script>
       function loadCart() {
         let cart = JSON.parse(localStorage.getItem("cart") || "[]");
         let container = document.getElementById("cart-container");
+
+        if (cart.length === 0) {
+    container.innerHTML = `<p style="font-size: 18px; text-align: center; grid-column: 1 / -1;"><i class="fa-solid fa-cart-arrow-down"></i> Your cart is empty!</p>`;
+    document.getElementById("cart-total").innerHTML = `
+      <div class="bill">
+        <h2>Cart Summary</h2>
+        <p>Total Quantity: <span id="totalQuantity">0</span></p>
+        <p>
+          MRP Total: <s id="totalMRP">₹0</s>
+          <span class="discount" id="discountPercent">0% OFF</span>
+        </p>
+        <h3>Grand Total: <span id="grandTotal">₹0</span></h3>
+        <p class="savings">You saved <strong id="totalSavings">₹0</strong> today!</p>
+        <div class="btns">
+          <button class="size_btn homebtn">
+            <a href="homepage.html"><i class="fa-solid fa-house"></i></a>
+          </button>
+        </div>
+      </div>
+    `;
+    return; 
+  }
+
         let totalMRP = 0;
         let total = 0;
+        let totalQuantity = 0;
         container.innerHTML = "";
 
         cart.forEach((item, index) => {
@@ -41,18 +383,17 @@
           let itemMRPTotal = mrpNum * item.quantity;
           total += itemTotal;
           totalMRP += itemMRPTotal;
+          totalQuantity += item.quantity;
           let discPerc = Math.round(((mrpNum - priceNum) / mrpNum) * 100);
-
-
 
           let div = document.createElement("div");
           div.classList.add("cart-item");
 
           div.innerHTML = `
-          <a href="${item.page}">
+          <a href="${item.page}" target="_blank">
           <div class="prod_title">
         <img src="${item.img}" alt="${item.name}" />
-        <h1>Nike Air Jordan 1 Mid</h1>
+        <h1>${item.name}</h1>
       </div>
       </a>
           <div class="prod_price">
@@ -60,6 +401,7 @@
         <p class="final_price">${
           item.price
         }<span class="discount">-${discPerc}%</span></p>
+        <p class="itemsize">Size: ${item.size}</p>
       </div>
       <div class="prod_quan">
         <h3>Quantity:</h3>
@@ -91,18 +433,38 @@
 
           container.appendChild(div);
         });
+        let savings = totalMRP - total;
+        let totalDiscountPercent = Math.round(
+          ((totalMRP - total) / totalMRP) * 100
+        );
+        document.getElementById("cart-total").innerHTML = `
 
-        // After the forEach loop
-let totalDiscountPercent = ((totalMRP - total) / totalMRP) * 100;
-document.getElementById("cart-total").innerHTML = `
-  <h2>Total: ₹${total.toLocaleString()}</h2>
-  <p>
-    <s>₹${totalMRP.toLocaleString()}</s>
-    <span class="discount">-${totalDiscountPercent}%</span>
-  </p>
-  <button id="checkout-btn">Checkout</button>
-`;
+          <div class="bill">
+          <h2>Cart Summary</h2>
 
+          <p>Total Quantity: <span id="totalQuantity">${totalQuantity}</span></p>
+
+          <p>
+            MRP Total: <s id="totalMRP">₹${totalMRP.toLocaleString()}</s>
+            <span class="discount" id="discountPercent">${totalDiscountPercent}% OFF</span>
+          </p>
+
+          <h3>Grand Total: <span id="grandTotal">₹${total.toLocaleString()}</span></h3>
+
+          <p class="savings">
+            You saved <strong id="totalSavings">₹${savings.toLocaleString()}</strong> today!
+          </p>
+
+          <div class="btns">
+            <div class="checkout">
+              <h1>Buy Items</h1>
+            </div>
+            <button class="size_btn homebtn">
+              <a href="homepage.html"><i class="fa-solid fa-house"></i></a>
+            </button>
+          </div>
+        </div>
+        `;
 
         document.getElementById("total-price").innerText =
           total.toLocaleString();
@@ -125,7 +487,6 @@ document.getElementById("cart-total").innerHTML = `
         loadCart();
       }
 
-      // Load cart on page load
       loadCart();
     </script>
   </body>

@@ -35,8 +35,8 @@
         </div>
       </div>
       <div class="cart_like">
-        <a class="likebtn" href="#"><i class="fa-solid fa-heart"></i></a>
-        <a class="cartbtn" href="#">
+        <a class="likebtn" href=""><i class="fa-solid fa-heart"></i></a>
+        <a class="cartbtn" href="cart.html" target="_blank">
           <i class="fa-solid fa-bag-shopping"></i>
           <p>0</p>
         </a>
@@ -274,6 +274,18 @@
         event.stopPropagation();
         el.classList.toggle("active");
       }
+
+      function updateCartIconCount() {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        let totalQuantity = 0;
+
+        cart.forEach((item) => {
+          totalQuantity += item.quantity;
+        });
+
+        document.querySelector(".cartbtn p").innerText = totalQuantity;
+      }
+      updateCartIconCount();
     </script>
   </body>
 </html>
